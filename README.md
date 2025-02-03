@@ -32,20 +32,17 @@ index.html
     <h1>Welcome!</h1>
     <script src="script.js"></script>
 </body>
-</html>
-```
+</html>```
 
 script.js
 ```javascript
-console.log("Hello from JavaScript!");
-```
+console.log("Hello from JavaScript!");```
 
 style.css
 ```css
 body {
     font-family: sans-serif;
-}
-```
+}```
 ```
 
 You can directly copy and paste this output into your LLM prompt!
