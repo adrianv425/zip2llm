@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/zip2llm/static/css/main.a73edcc6.css",
+    "main.js": "/zip2llm/static/js/main.5e5c037c.js",
+    "index.html": "/zip2llm/index.html",
+    "main.a73edcc6.css.map": "/zip2llm/static/css/main.a73edcc6.css.map",
+    "main.5e5c037c.js.map": "/zip2llm/static/js/main.5e5c037c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a73edcc6.css",
+    "static/js/main.5e5c037c.js"
+  ]
+}
