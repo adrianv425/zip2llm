@@ -1,0 +1,221 @@
+/* src/App.css - Modern & Sleek Styles */
+
+:root {
+  /* Color Palette - Modern, Clean */
+  --primary-color: #2563eb; /*  A vibrant blue for primary actions (like buttons) */
+  --secondary-color: #6b7280; /*  A muted grey for secondary text, labels */
+  --background-color: #f3f4f6; /*  Light background for main areas */
+  --surface-color: #ffffff; /*  White surface for cards, input areas, output area */
+  --text-primary: #1e293b; /*  Dark text for main content */
+  --text-secondary: #4b5563; /*  Slightly lighter text for less emphasized info */
+  --accent-color: #10b981; /*  Green accent for positive feedback (optional) */
+  --error-color: #dc2626; /*  Red for errors */
+  --border-color: #e5e7eb; /*  Light border for dividers and input boxes */
+}
+
+body {
+  font-family: "Inter var", sans-serif; /* Modern sans-serif font (Inter is excellent, ensure it's loaded or use system sans-serif fallback) */
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  max-width: 1200px; /* Limit width on large screens for better readability */
+  padding: 2rem;
+}
+
+.App {
+  background-color: var(--background-color);
+  padding: 2rem;
+  border-radius: 0.75rem; /* Rounded corners for the main app container */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Spacing between sections */
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700; /* Bold heading */
+  color: var(--primary-color); /* Primary color for the main title */
+  margin-bottom: 0.5rem;
+}
+
+h2,
+h3 {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  color: var(--text-secondary); /* Slightly muted paragraph text */
+  line-height: 1.6;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+}
+
+/* Input Area Styling */
+.zip-input-container {
+  background-color: var(--surface-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.zip-input-container label {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+input[type="file"] {
+  opacity: 0; /* Hide the default file input */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease-in-out;
+  position: relative; /* For positioning the hidden file input */
+  overflow: hidden; /* To contain the absolute positioned input */
+  text-align: center; /* Ensure text is centered if inside a larger container */
+}
+
+.upload-button:hover {
+  background-color: #1d4ed8; /* Darker shade on hover */
+}
+
+/* Error Message */
+.error {
+  color: var(--error-color);
+  background-color: rgba(220, 53, 69, 0.1); /* Light red background for errors */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--error-color);
+  margin-top: 1rem;
+}
+
+/* Statistics Display */
+.statistics-container {
+  background-color: var(--surface-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.statistics-container h3 {
+  margin-bottom: 1rem;
+}
+
+.statistics-container ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.statistics-container li {
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+/* Output Display */
+.output-container {
+  background-color: var(--surface-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.output-textarea {
+  width: 100%; /* Full width */
+  min-height: 400px; /* Increased min-height for more visibility */
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background-color: #f9fafb; /* Slightly off-white for textarea background */
+  resize: vertical; /* Allow vertical resizing */
+  box-sizing: border-box; /* Ensure padding is inside the width/height */
+}
+
+.output-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end; /* Align buttons to the right */
+}
+
+.output-buttons button {
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.output-buttons button:first-child {
+  background-color: #e5e7eb; /* Light grey for Clear button */
+  color: var(--text-primary);
+}
+
+.output-buttons button:first-child:hover {
+  background-color: #d1d5db; /* Slightly darker grey on hover */
+}
+
+.output-buttons button:last-child {
+  background-color: var(--primary-color); /* Primary color for Copy button */
+  color: white;
+}
+
+.output-buttons button:last-child:hover {
+  background-color: #1d4ed8; /* Darker primary color on hover */
+}
+
+/* Utility Classes (Optional but good practice) */
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
+/* ... add more as needed for consistent spacing ... */
