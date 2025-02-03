@@ -1,51 +1,124 @@
+# Zip2LLM - Codebase to LLM Context Converter 🚀
 
-**Getting Started - Zip to Text in 3 Easy Steps!**
+**Effortlessly Prepare Your Code Projects for Large Language Models.**
 
-1.  **Clone the Repository:** Grab the code and get it running locally!
+---
+
+Feed your codebase to an LLM for code generation, analysis, or understanding. Zip2LLM is a simple, open-source web tool designed to convert zipped codebases into a structured, text-based format that is optimized for Large Language Models (LLMs).
+
+**Example Output**
+
+Imagine you zip a simple project folder named `my-project` containing these files:
+
+```
+my-project.zip
+├── index.html
+├── script.js
+└── style.css
+```
+
+Zip2LLM will produce the following structured text output:
+
+```text
+index.html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+script.js
+```javascript
+console.log("Hello from JavaScript!");
+```
+
+style.css
+```css
+body {
+    font-family: sans-serif;
+}
+```
+```
+
+You can directly copy and paste this output into your LLM prompt!
+
+**Key Features**
+
+*   **Zip File Input:** Accepts `.zip` archives of your codebase.
+*   **Structured Text Output:** Creates a single, copyable text output.
+*   **Relative File Paths:** Includes file paths within the zip structure for context.
+*   **Fenced Code Blocks:** Uses Markdown fenced code blocks (``` ```) for code content.
+*   **Language Detection:** Automatically detects and applies language tags for syntax highlighting in code blocks (e.g., ```javascript, ```python, ```html).
+*   **File Statistics:** Displays a summary of processed files and language distribution.
+*   **Clear & Copy Buttons:** Easy UI actions for clearing output and copying to clipboard.
+*   **Error Handling:**  Handles invalid zip files and file reading errors gracefully.
+
+**Getting Started - Quick Setup**
+
+1.  **Clone the Repository:**
 
     ```bash
     git clone https://github.com/adrianv425/zip2llm.git
     cd zip2llm
     ```
 
-2.  **Install Dependencies:**  Make sure you have Node.js and npm (or yarn) installed. Then, fire up your terminal and:
+2.  **Install Dependencies:**
 
     ```bash
     npm install
     ```
 
-3.  **Run the Application:** Launch the development server and open it in your browser!
+3.  **Run the Application:**
 
     ```bash
     npm start
     ```
-    Navigate to `http://localhost:3000` (or the address shown in your terminal).
+    Open your browser and navigate to `http://localhost:3000`.
 
+**How to Use**
 
-**Contributing - Let's Build This Together! 🤝**
+1.  **Upload Zip File:** Click "Upload Zip File" and select your codebase's `.zip` archive.
+2.  **View Structured Output:** The formatted text will be displayed below.
+3.  **Copy to LLM:** Click the "Copy" button and paste the output into your LLM prompt before your code-related instructions.
+4.  **Optional: Review Statistics:** Check the "Statistics" section for file and language counts.
+5.  **Clear for Next Zip:** Use "Clear" to reset the output for processing a new project.
 
-Zip2LLM is open-source and built by the community, for the community! We welcome contributions of all kinds to make this tool even better for everyone working with LLMs and code.
+**Ideal Use Cases**
 
-**Want to Contribute? Here's how:**
+*   **Code Generation:** Provide project context to LLMs for more accurate and relevant code completion or generation within your project's structure.
+*   **Code Analysis & Explanation:** Help LLMs understand the relationships between files in your project for better code analysis, bug finding, or explanation tasks.
+*   **Learning & Documentation:** Use LLMs to explore and understand new codebases by providing a structured overview.
 
-*   **Fork the Repository:**  Create your own copy of the repository to work on.
-*   **Create a Branch:** Make your changes in a dedicated branch (e.g., `feature/amazing-enhancement` or `fix/that-pesky-bug`).
-*   **Code and Commit:** Implement your awesome feature or bug fix. Please try to follow the existing styling and code structure.
-*   **Styling Considerations:**  We aim for a clean and modern UI (as you can see!). If you're making UI-related changes, please try to maintain the current visual style and use the existing CSS variables in `src/App.css` for consistency.
-*   **Test Your Changes:**  Ensure your changes are working as expected and don't introduce any regressions.
-*   **Submit a Pull Request (PR):**  Once you're happy with your contribution, submit a PR to the `main` branch of the main repository.
+**Contributing - Open to Collaboration! 🤝**
 
-**Areas Where You Could Shine (Contribution Ideas):**
+Zip2LLM thrives on community contributions! We welcome your help in making this tool even more powerful and user-friendly.
 
-*   **More Language Support:** Expand the language detection in `src/utils.js` to recognize even more programming languages and file types!
-*   **File Filtering:** Add options to include or exclude files based on patterns or extensions before processing.
-*   **Line Numbering:**  Include line numbers in the code blocks (optional feature) for even more precise context.
-*   **Progress Indication:**  Implement a progress bar or loading indicator for larger zip files.
-*   **Performance Optimizations:**  If you see any performance bottlenecks, especially with very large zip files, optimizations are always welcome!
-*   **UI/UX Enhancements:**  Have a brilliant idea to make the UI even more delightful or user-friendly? We're all ears!
+**Contribution Guidelines:**
+
+*   **Fork and Branch:** Fork the repository and create a feature or bug-fix branch.
+*   **Code Style:** Maintain the existing code style and UI aesthetic. Use CSS variables in `src/App.css` for styling.
+*   **Testing:**  Ensure your changes are well-tested and don't introduce regressions.
+*   **Pull Requests:** Submit pull requests to the `main` branch with a clear description of your changes.
+
+**Contribution Ideas**
+
+*   **Expand Language Support:**  Add detection for more programming languages in `src/utils.js`.
+*   **File Filtering:** Implement options to include/exclude files based on patterns.
+*   **Line Numbers:** Add an option to include line numbers in output code blocks.
+*   **Progress Bar:** Implement progress indication for large zip files.
+*   **Performance Improvements:** Optimize for handling very large zip files.
+*   **UI/UX Enhancements:** Suggest and implement UI/UX improvements.
 
 **License**
 
-This project is licensed under the [MIT License](LICENSE) - feel free to use, modify, and distribute it as you wish!
+[MIT License](LICENSE)
 
-**Let's make LLM-powered code tasks smoother and more effective, one zip file at a time! Happy coding and contextualizing!** 🎉
+**Let's make working with code and LLMs more intuitive! Happy contextualizing!** 🎉
