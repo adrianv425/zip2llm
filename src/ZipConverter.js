@@ -4,20 +4,21 @@ import './App.css';
 import { getLanguageFromFilename } from './utils';
 import ZipInput from './components/ZipInput';
 import OutputDisplay from './components/OutputDisplay';
-import StatisticsDisplay from './components/StatisticsDisplay'; // Import StatisticsDisplay
+import StatisticsDisplay from './components/StatisticsDisplay';
 
 function App() {
   const [outputText, setOutputText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [fileStatistics, setFileStatistics] = useState({ // State for statistics
+  const [fileStatistics, setFileStatistics] = useState({
     fileCount: 0,
     languageCounts: {},
   });
+  const [isEnvFilteringEnabled, setIsEnvFilteringEnabled] = useState(true);
 
   const handleFileSelect = useCallback(async (file) => {
     setErrorMessage('');
     setOutputText('');
-    setFileStatistics({ fileCount: 0, languageCounts: {} }); // Reset statistics on new file
+    setFileStatistics({ fileCount: 0, languageCounts: {} });
 
     if (!file) {
       return;
@@ -28,7 +29,7 @@ function App() {
       return;
     }
 
-    let currentFileCount = 0; // Track counts within this processing
+    let currentFileCount = 0;
     const currentLanguageCounts = {};
 
     try {
@@ -37,12 +38,18 @@ function App() {
 
       for (const relativePath in zip.files) {
         if (!zip.files[relativePath].dir) {
+          // **Enhanced .env filtering and Toggle Logic**
+          if (isEnvFilteringEnabled && relativePath.startsWith('.env')) {
+            console.warn(`Ignoring .env file: "${relativePath}"`);
+            continue;
+          }
+
           try {
             const fileData = await zip.files[relativePath].async('text');
             const language = getLanguageFromFilename(relativePath);
 
-            currentFileCount++; // Increment file count
-            currentLanguageCounts[language] = (currentLanguageCounts[language] || 0) + 1; // Increment language count
+            currentFileCount++;
+            currentLanguageCounts[language] = (currentLanguageCounts[language] || 0) + 1;
 
             output += `${relativePath}\n`;
             output += `\`\`\`${language}\n`;
@@ -56,24 +63,32 @@ function App() {
         }
       }
       setOutputText(output);
-      setFileStatistics({ fileCount: currentFileCount, languageCounts: currentLanguageCounts }); // Update statistics state
+      setFileStatistics({ fileCount: currentFileCount, languageCounts: currentLanguageCounts });
 
     } catch (zipError) {
       console.error("Error processing zip file:", zipError);
       setErrorMessage("Error processing zip file. It might be corrupted or invalid.");
-      setFileStatistics({ fileCount: 0, languageCounts: {} }); // Reset statistics on error
+      setFileStatistics({ fileCount: 0, languageCounts: {} });
     }
-  }, []);
+  }, [isEnvFilteringEnabled]); // Dependency on isEnvFilteringEnabled
 
   const handleClearOutput = useCallback(() => {
     setOutputText('');
-    setFileStatistics({ fileCount: 0, languageCounts: {} }); // Clear statistics on clear
+    setFileStatistics({ fileCount: 0, languageCounts: {} });
+  }, []);
+
+  const handleToggleEnvFiltering = useCallback((event) => {
+    setIsEnvFilteringEnabled(event.target.checked); // Update state based on toggle
   }, []);
 
   return (
     <div className="App">
       <h1>Zip to Text for LLMs</h1>
-      <ZipInput onFileSelect={handleFileSelect} />
+      <ZipInput
+        onFileSelect={handleFileSelect}
+        isEnvFilteringEnabled={isEnvFilteringEnabled} // Pass state
+        onToggleEnvFiltering={handleToggleEnvFiltering} // Pass setter handler
+      />
       {errorMessage && <div className="error">{errorMessage}</div>}
       <StatisticsDisplay
         fileCount={fileStatistics.fileCount}

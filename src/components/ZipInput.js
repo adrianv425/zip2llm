@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ZipInput({ onFileSelect }) {
+function ZipInput({ onFileSelect, isEnvFilteringEnabled, onToggleEnvFiltering }) {
     const handleChange = (event) => {
         const file = event.target.files[0];
         onFileSelect(file);
@@ -14,6 +14,20 @@ function ZipInput({ onFileSelect }) {
             <div className="upload-button">
                 Upload Zip File
                 <input type="file" id="zipFileInput" accept=".zip" onChange={handleChange} />
+            </div>
+
+            {/* .env Filtering Toggle */}
+            <div className="env-filter-toggle">
+                <label htmlFor="envFilterToggle" className="env-filter-label">
+                    Ignore .env files:
+                </label>
+                <input
+                    type="checkbox"
+                    id="envFilterToggle"
+                    checked={isEnvFilteringEnabled}
+                    onChange={onToggleEnvFiltering}
+                    className="env-filter-checkbox"
+                />
             </div>
         </div>
     );

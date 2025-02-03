@@ -1,3 +1,6 @@
+/* ------------------------------------- */
+/*  1. Root Variables (Color Palette, Typography, etc.) */
+/* ------------------------------------- */
 :root {
   /* Color Palette - Modern, Clean */
   --primary-color: #2563eb; /*  A vibrant blue for primary actions (like buttons) */
@@ -9,8 +12,12 @@
   --accent-color: #10b981; /*  Green accent for positive feedback (optional) */
   --error-color: #dc2626; /*  Red for errors */
   --border-color: #e5e7eb; /*  Light border for dividers and input boxes */
+  --primary-color-rgb: 37, 99, 235; /* RGB value of --primary-color (25, 99, 235 in RGB) */
 }
 
+/* ------------------------------------- */
+/*  2. General Body and App Styles */
+/* ------------------------------------- */
 body {
   font-family: "Inter var", sans-serif;
   background-color: var(--background-color);
@@ -69,6 +76,9 @@ p {
   margin-bottom: 1.5rem;
 }
 
+/* ------------------------------------- */
+/*  4. ZipInput Component Styles */
+/* ------------------------------------- */
 .zip-input-container {
   background-color: var(--surface-color);
   border-radius: 0.5rem;
@@ -114,15 +124,60 @@ input[type="file"] {
   background-color: #1d4ed8;
 }
 
-.error {
-  color: var(--error-color);
-  background-color: rgba(220, 53, 69, 0.1);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--error-color);
-  margin-top: 1rem;
+.env-filter-toggle {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: flex-start; /* Align toggle to the start */
 }
 
+.env-filter-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+  user-select: none; /* Prevent text selection on label click */
+}
+
+.env-filter-checkbox {
+  appearance: none; /* Remove default checkbox styling */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.3rem;
+  background-color: var(--surface-color);
+  cursor: pointer;
+  position: relative; /* For checkmark positioning */
+  transition: border-color 0.2s ease-in-out;
+}
+
+.env-filter-checkbox:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: var(--primary-color); /* Highlight border on focus */
+  box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.2); /* Add subtle focus ring */
+}
+
+.env-filter-checkbox:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.env-filter-checkbox:checked::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 0.5rem;
+  height: 0.8rem;
+  border: solid var(--surface-color); /* White checkmark */
+  border-width: 0 0.2rem 0.2rem 0; /* Create checkmark shape using borders */
+}
+
+/* ------------------------------------- */
+/*  5. StatisticsDisplay Component Styles */
+/* ------------------------------------- */
 .statistics-container {
   background-color: var(--surface-color);
   border-radius: 0.5rem;
@@ -144,6 +199,9 @@ input[type="file"] {
   color: var(--text-primary);
 }
 
+/* ------------------------------------- */
+/*  6. OutputDisplay Component Styles */
+/* ------------------------------------- */
 .output-container {
   background-color: var(--surface-color);
   border-radius: 0.5rem;
@@ -199,6 +257,21 @@ input[type="file"] {
   background-color: #1d4ed8;
 }
 
+/* ------------------------------------- */
+/*  7. Error Message Styles */
+/* ------------------------------------- */
+.error {
+  color: var(--error-color);
+  background-color: rgba(220, 53, 69, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--error-color);
+  margin-top: 1rem;
+}
+
+/* ------------------------------------- */
+/*  8. Utility Classes (Margin, Padding, etc.) */
+/* ------------------------------------- */
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -210,20 +283,4 @@ input[type="file"] {
 }
 .mb-4 {
   margin-bottom: 1rem;
-}
-.env-filter-toggle {
-  margin-top: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  justify-content: flex-start;
-}
-
-.env-filter-label {
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-.env-filter-checkbox {
-  /* Add custom styling to the checkbox if desired */
 }
