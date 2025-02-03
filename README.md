@@ -47,6 +47,14 @@ body {
 
 You can directly copy and paste this output into your LLM prompt!
 
+Try the Live Demo!
+
+Want to quickly test out Zip2LLM? Access the live demo directly in your browser:
+
+[👉 Zip2LLM Live Demo 👈](https://adrianv425.github.io/zip2llm/)
+
+No installation required! Simply visit the link above to upload your zip file and see Zip2LLM in action.
+
 **Key Features**
 
 *   **Zip File Input:** Accepts `.zip` archives of your codebase.
